@@ -1,0 +1,6 @@
+@import "../../style/base.scss";
+
+.mode {
+  @include flexCenterXY;
+  gap: 4px;
+}

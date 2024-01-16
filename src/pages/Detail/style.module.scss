@@ -1,6 +1,7 @@
 @import "../../style/base.scss";
 
 .main-container {
+  font-family: $detail-font;
   @include apply-at-sm-size {
     display: block;
   }
@@ -34,17 +35,43 @@
     .main-detail {
       display: flex;
       flex-direction: column;
-      border: 2px solid yellow;
       margin-top: 20px;
+      width: 100%;
 
       .detail-wrapper {
         margin-top: 35px;
-        border: 2px solid red;
+        padding: 10px;
 
         .detail {
           display: flex;
+          gap: 10px;
+          grid-template-areas: "one two two";
+          margin-bottom: 20px;
+
           @include apply-at-sm-size {
             display: block;
+          }
+
+          .detail-one {
+            width: 250px;
+
+            .value-wrapper {
+              display: flex;
+            }
+
+            .value {
+              color: #00000080;
+            }
+          }
+
+          .detail-two {
+            width: 250px;
+          }
+
+          .borders {
+            button {
+              background-color: red;
+            }
           }
         }
       }

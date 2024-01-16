@@ -44,9 +44,15 @@ const Home = () => {
     }
   };
 
-  const handleSearchRegion = async () => {
+  const handleSearchRegion = async (callRegion) => {
+    if (!callRegion) {
+      fetchCountry();
+    }
     try {
-      const response = await callApi(`/region/${region.toLowerCase()}`, "GET");
+      const response = await callApi(
+        `/region/${callRegion.toLowerCase()}`,
+        "GET"
+      );
       const modifiedData = response?.slice(0, 20)?.map((item) => {
         return {
           flags: item.flags?.svg,
@@ -56,6 +62,7 @@ const Home = () => {
           capital: item.capital[0],
         };
       });
+
       setCountries(modifiedData);
     } catch (error) {
       console.log(error);

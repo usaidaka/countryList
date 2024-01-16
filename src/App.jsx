@@ -36,6 +36,12 @@ function Root() {
   const darkTheme = createTheme({
     palette: {
       mode: myMode,
+      primary: {
+        main: myMode === "light" ? "#FFFFFF" : "#444545",
+      },
+      secondary: {
+        main: myMode === "light" ? "#ff4081" : "#f50057",
+      },
     },
   });
 

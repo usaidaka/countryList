@@ -21,15 +21,15 @@ const Detail = () => {
       const modifiedData = {
         flags: response[0]?.flags?.svg,
         name: response[0]?.name?.common,
-        nativeName: response[0]?.name?.nativeName?.cat?.official,
+        nativeName: Object.values(response[0].name?.nativeName),
         population: response[0]?.population,
         region: response[0]?.region,
         subRegion: response[0]?.subregion,
         capital: response[0]?.capital[0],
         tld: response[0].tld[0],
-        currency: response[0]?.currencies?.EUR?.name,
-        language: response[0]?.languages?.cat,
-        borderCountries: response[0].borders,
+        currency: Object.values(response[0]?.currencies)[0],
+        language: Object.values(response[0]?.languages)[0],
+        borders: response[0]?.borders,
       };
 
       setCountry(modifiedData);
@@ -51,17 +51,36 @@ const Detail = () => {
           <Typography variant="h4">{country.name}</Typography>
           <Box className={classes["detail-wrapper"]}>
             <Box className={classes.detail}>
-              <Box>
-                <Typography>Native Name : {country.nativeName}</Typography>
+              <Box className={classes["detail-one"]}>
+                <Box>
+                  <Typography>Native Name :</Typography>
+                  {country.nativeName?.map((x, idx) => {
+                    return (
+                      <div key={idx}>
+                        <Typography>{x.official}</Typography>
+                      </div>
+                    );
+                  })}
+                </Box>
                 <Typography>Population : {country.population}</Typography>
                 <Typography>Region : {country.region}</Typography>
                 <Typography>Sub Region : {country.subRegion}</Typography>
                 <Typography>Capital : {country.capital}</Typography>
               </Box>
-              <Box>
+              <Box className={classes["detail-two"]}>
                 <Typography>Top Level Domain: {country.tld}</Typography>
-                <Typography>Currencies: {country.currency}</Typography>
+                <Typography>Currencies: {country.currency?.name}</Typography>
                 <Typography>Languages: {country.language}</Typography>
+              </Box>
+            </Box>
+            <Box>
+              <Typography>Border Countries:</Typography>
+              <Box>
+                {country.borders?.map((item, idx) => (
+                  <Button key={idx} disabled>
+                    {item}
+                  </Button>
+                ))}
               </Box>
             </Box>
           </Box>

@@ -22,20 +22,19 @@ export default function Dropdown({
           id="demo-simple-select-helper"
           value={value}
           label={placeholder}
-          onChange={(e) => setter(e.target.value)}
-          onClick={onChange}
+          onChange={(e) => {
+            setter(e.target.value);
+            onChange(e.target.value);
+          }}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {list.map((item, idx) => {
-            console.log(item);
-            return (
-              <MenuItem value={item} key={idx}>
-                {item}
-              </MenuItem>
-            );
-          })}
+          {list.map((item, idx) => (
+            <MenuItem value={item} key={idx}>
+              {item}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

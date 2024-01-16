@@ -1,0 +1,53 @@
+@import "../../style/base.scss";
+
+.main-container {
+  @include apply-at-sm-size {
+    display: block;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+
+  .detail-container {
+    display: flex;
+    margin-top: 40px;
+    gap: 50px;
+
+    @include apply-at-sm-size {
+      display: block;
+    }
+
+    .image-wrapper {
+      @include flexCenterXY;
+
+      > img {
+        width: 555px;
+        height: 400px;
+
+        @include apply-at-sm-size {
+          width: 330 px;
+          height: 238px;
+        }
+      }
+    }
+    .main-detail {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid yellow;
+      margin-top: 20px;
+
+      .detail-wrapper {
+        margin-top: 35px;
+        border: 2px solid red;
+
+        .detail {
+          display: flex;
+          @include apply-at-sm-size {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

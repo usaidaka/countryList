@@ -1,8 +1,0 @@
-@import "../../style/base.scss";
-
-.test {
-  @include apply-at-md-size {
-    background-color: red;
-  }
-  border: 2px solid red;
-}

@@ -1,8 +1,31 @@
 @import "../../style/base.scss";
 
-.test {
-  @include apply-at-md-size {
-    background-color: red;
+.head-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @include apply-at-sm-size {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
   }
-  border: 2px solid red;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+
+  @include apply-at-sm-size {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+  }
 }
